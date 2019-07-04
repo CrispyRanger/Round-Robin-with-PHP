@@ -1,6 +1,6 @@
 <?php
    echo "<center><h1>Round Robin Scheduling</h1></center>";
-   $conn = new mysqli('localhost','root','','oppertunity2') or die(mysql_error($conn));
+   $conn = new mysqli('localhost','root','12#ForTheHorde','oppertunity2') or die(mysql_error($conn));
    
    $sql_pname="SELECT pname FROM processes";
    $p_name = array();
