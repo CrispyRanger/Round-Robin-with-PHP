@@ -2,7 +2,7 @@
    echo "<center><h1>Round Robin Scheduling</h1></center>";
    $conn = new mysqli('localhost','root','','oppertunity2') or die(mysql_error($conn));
    
-   $sql_pname="SELECT pname FROM processes ORDER BY at";
+   $sql_pname="SELECT pname FROM processes";
    $p_name = array();
    
    if ($result=mysqli_query($conn,$sql_pname))
@@ -14,7 +14,7 @@
       mysqli_free_result($result);
    }
    
-   $sql_at="SELECT at FROM processes ORDER BY at";
+   $sql_at="SELECT at FROM processes";
    $p_at = array();
    
    if ($result=mysqli_query($conn,$sql_at))
@@ -26,7 +26,7 @@
       mysqli_free_result($result);
    }
    
-   $sql_bt="SELECT bt FROM processes ORDER BY at";
+   $sql_bt="SELECT bt FROM processes";
    $p_bt = array();
    $p_bt_temp = array();
 
@@ -129,15 +129,25 @@
             }
          }
       }
-
-      echo "<pre>".$time."\t".$p_name[$ready[$first]] . "</pre>";
+      
+      if($ready[$first] == -1)
+      {
+         echo "<pre>".$time."\t". "No Process Running" . "</pre>";
+      }
+      else
+      {
+         echo "<pre>".$time."\t".$p_name[$ready[$first]] . "</pre>";
+         
+         if($p_bt_temp[$ready[$first]]>0)
+         {
+            $p_bt_temp[$ready[$first]]--;
+         }  
+      }
       
       $time++;
       $tq_run++;
-      if($p_bt_temp[$ready[$first]]>0)
-      {
-         $p_bt_temp[$ready[$first]]--;
-      }
+      
+      
       
       if($tq == $tq_run)
       {
