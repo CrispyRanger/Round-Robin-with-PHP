@@ -146,9 +146,7 @@
       
       $time++;
       $tq_run++;
-      
-      
-      
+
       if($tq == $tq_run)
       {
          $tq_run = 0;

@@ -2,7 +2,7 @@
 
 <?php
    
-   $conn = new mysqli('localhost','root','','oppertunity2') or die(mysql_error($conn));
+   $conn = new mysqli('localhost','root','12#ForTheHorde','oppertunity2') or die(mysql_error($conn));
    
    if(isset($_POST['pname']) && isset($_POST['submit']))
    {
